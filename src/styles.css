@@ -1,0 +1,169 @@
+:root {
+  --bg: #f3f1ec;
+  --fg: #1c1a16;
+  --muted: #6b655c;
+  --line: #d7d2c8;
+  --surface: #fffcf7;
+  --quiet: #ebe7de;
+  --ink: #1c1a16;
+  --font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+}
+
+.wordmark {
+  margin: 0;
+  font-family: var(--font);
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.well {
+  display: grid;
+  min-height: 16rem;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: var(--quiet);
+  padding: 1rem;
+}
+
+button.well {
+  width: 100%;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.well:disabled { cursor: default; }
+
+.qr-img {
+  width: min(100%, 28rem);
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.field, .line {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0.75rem 0.875rem;
+  font: inherit;
+}
+
+.field { min-height: 6.5rem; resize: vertical; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--fg);
+  padding: 0.55rem 0.85rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn-primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-ghost { background: transparent; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.ecc {
+  display: grid;
+  justify-items: center;
+  gap: 0.15rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+}
+
+.ecc:has(:checked) { border-color: var(--ink); background: var(--quiet); }
+.ecc-id { font-weight: 650; }
+.ecc-hint { font-size: 0.75rem; color: var(--muted); }
+
+.color-field { display: grid; gap: 0.35rem; }
+.color-field input[type="color"] {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  background: var(--bg);
+  padding: 0.2rem;
+}
+
+.thumb {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.open-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 1.25rem;
+  overflow: auto;
+  background: var(--bg);
+  padding: 1.5rem;
+}
+
+.open-photo {
+  width: min(100%, 40rem);
+  max-height: 78vh;
+  object-fit: contain;
+  background: var(--surface);
+}
+
+.open-quote {
+  max-width: 38rem;
+  font-family: var(--font);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: 1.25;
+  text-align: center;
+}
+
+.layout {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 980px) {
+  .layout { grid-template-columns: 1fr 1fr; }
+  .preview-card { grid-row: span 3; }
+}
+
+.text-muted { color: var(--muted); }
+.break { overflow-wrap: anywhere; }
